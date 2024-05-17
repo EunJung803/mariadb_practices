@@ -84,7 +84,7 @@ order by c.salary desc, a.emp_no;
 
 -- 문제6.
 -- 평균 연봉이 가장 높은 부서는?
-select c.dept_name, avg(a.salary)
+select c.dept_name, round(avg(a.salary))
 from salaries a, dept_emp b, departments c
 where a.emp_no = b.emp_no
 and b.dept_no = c.dept_no
@@ -95,7 +95,7 @@ order by avg(a.salary) desc limit 0, 1;
 
 -- 문제7.
 -- 평균 연봉이 가장 높은 직책?
-select b.title, avg(a.salary)
+select b.title, round(avg(a.salary))
 from salaries a, titles b
 where a.emp_no = b.emp_no
 and a.to_date = '9999-01-01'
