@@ -55,6 +55,7 @@ public class BookDaoTest {
 	@AfterAll
 	public static void cleanUp() {
 		bookDao.deleteByNo(mockBookVo.getNo());
+		authorDao.deleteByNo(mockAuthorVo.getNo());
 	}
 
 }
