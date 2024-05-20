@@ -59,6 +59,56 @@ public class AuthorDao {
 	    
 		return result;
 	}
+
+
+	public int insert(AuthorVo vo) {
+		
+		int result = 0;
+		
+		try (
+			Connection conn = getConnection();
+			PreparedStatement pstmt1 = conn.prepareStatement("insert into author(name) values(?)");
+			PreparedStatement pstmt2 = conn.prepareStatement("select last_insert_id() from dual");
+		) {
+			
+			pstmt1.setString(1, vo.getName());
+			result = pstmt1.executeUpdate();
+			
+			ResultSet rs = pstmt2.executeQuery();
+			
+			vo.setNo(rs.next() ? rs.getLong(1) : null);		// true면 getLong, false면 null 로 설정
+			
+			rs.close();
+		     
+		} catch (SQLException e) {
+			System.out.println("error: " + e);
+		}
+	    
+		
+		return result;
+	}
+
+
+	public int deleteByNo(Long no) {
+		
+		int result = 0;
+		
+		try (
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("delete from author where no = ?");
+		) {
+			
+			pstmt.setLong(1, no);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("error: " + e);
+		}
+	    
+		
+		return result;
+		
+	}
 	
 
 }
