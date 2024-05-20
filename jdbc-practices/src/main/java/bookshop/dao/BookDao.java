@@ -67,7 +67,7 @@ public class BookDao {
 		
 		try (
 	    	Connection conn = getConnection();
-    		PreparedStatement pstmt = conn.prepareStatement("select a.no, a.title, a.status, b.name from book a, author b where a.author_no = b.no");
+    		PreparedStatement pstmt = conn.prepareStatement("select a.no, a.title, a.status, b.name from book a, author b where a.author_no = b.no order by no desc");
     		ResultSet rs = pstmt.executeQuery();
 	    ) {
 
