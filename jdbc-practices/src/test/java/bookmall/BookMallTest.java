@@ -55,11 +55,11 @@ public class BookMallTest {
 		// 사용자 추가(2명)
 		userDao.insert(mockUserVo01);
 		userDao.insert(mockUserVo02);
-//		
-//		// 카테고리 등록(3개)
-//		categoryDao.insert(mockCategoryVo01);
-//		categoryDao.insert(mockCategoryVo02);
-//		categoryDao.insert(mockCategoryVo03);
+		
+		// 카테고리 등록(3개)
+		categoryDao.insert(mockCategoryVo01);
+		categoryDao.insert(mockCategoryVo02);
+		categoryDao.insert(mockCategoryVo03);
 //		
 //		// 서적 등록(3개)
 //		mockBookVo01.setCategoryNo(mockCategoryVo01.getNo());
@@ -104,20 +104,20 @@ public class BookMallTest {
 //		orderDao.insertBook(mockOrderBookVo02);
 	}
 	
-//	@Test
-//	public void testtt() {
-//		assertTrue(1-1 == 0);
-//	}
+	@Test
+	public void testtt() {
+		assertTrue(1-1 == 0);
+	}
 
 	@Test
 	public void testUser() {
 		assertEquals(2, userDao.findAll().size());
 	}
-//
-//	@Test
-//	public void testCategory() {
-//		assertEquals(3, categoryDao.findAll().size());
-//	}
+
+	@Test
+	public void testCategory() {
+		assertEquals(3, categoryDao.findAll().size());
+	}
 //	
 //	@Test
 //	public void testCart() {
@@ -185,11 +185,11 @@ public class BookMallTest {
 //		bookDao.deleteByNo(mockBookVo02.getNo());
 //		bookDao.deleteByNo(mockBookVo03.getNo());
 //		
-//		// 카테고리
-//		categoryDao.deleteByNo(mockCategoryVo01.getNo());
-//		categoryDao.deleteByNo(mockCategoryVo02.getNo());
-//		categoryDao.deleteByNo(mockCategoryVo03.getNo());
-//		
+		// 카테고리
+		categoryDao.deleteByNo(mockCategoryVo01.getNo());
+		categoryDao.deleteByNo(mockCategoryVo02.getNo());
+		categoryDao.deleteByNo(mockCategoryVo03.getNo());
+		
 		// 사용자
 		userDao.deleteByNo(mockUserVo01.getNo());
 		userDao.deleteByNo(mockUserVo02.getNo());
