@@ -61,9 +61,11 @@ public class CartDao {
 		
 		try (
 	    	Connection conn = getConnection();
-    		PreparedStatement pstmt = conn.prepareStatement("select a.user_no, a.book_no, b.title, a.quantity from cart a, book b where a.book_no = b.no");
-			ResultSet rs = pstmt.executeQuery();
+    		PreparedStatement pstmt = conn.prepareStatement("select a.user_no, a.book_no, b.title, a.quantity from cart a, book b where a.book_no = b.no and a.user_no = ?");
 	    ) {
+			
+			pstmt.setLong(1, no);
+			ResultSet rs = pstmt.executeQuery();
 			
 	    	while(rs.next()) {
 	    		Long userNo = rs.getLong(1);
@@ -79,6 +81,8 @@ public class CartDao {
 	    		
 	    		result.add(vo);
 	    	}
+	    	
+	    	rs.close();
 		     
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
