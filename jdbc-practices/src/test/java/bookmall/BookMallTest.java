@@ -1,7 +1,8 @@
 package bookmall;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -54,65 +55,64 @@ public class BookMallTest {
 		// 사용자 추가(2명)
 		userDao.insert(mockUserVo01);
 		userDao.insert(mockUserVo02);
-		
-		// 카테고리 등록(3개)
-		categoryDao.insert(mockCategoryVo01);
-		categoryDao.insert(mockCategoryVo02);
-		categoryDao.insert(mockCategoryVo03);
-		
-		// 서적 등록(3개)
-		mockBookVo01.setCategoryNo(mockCategoryVo01.getNo());
-		bookDao.insert(mockBookVo01);
-
-		mockBookVo02.setCategoryNo(mockCategoryVo02.getNo());
-		bookDao.insert(mockBookVo02);
-
-		mockBookVo03.setCategoryNo(mockCategoryVo03.getNo());		
-		bookDao.insert(mockBookVo03);
-		
-		// 카트 담기(2개)
-		mockCartVo01.setUserNo(mockUserVo01.getNo());
-		mockCartVo01.setBookNo(mockBookVo01.getNo());
-		mockCartVo01.setQuantity(1);
-		cartDao.insert(mockCartVo01);
-		
-		mockCartVo02.setUserNo(mockUserVo01.getNo());
-		mockCartVo02.setBookNo(mockBookVo02.getNo());
-		mockCartVo02.setQuantity(2);		
-		cartDao.insert(mockCartVo02);
-		
-		// 주문하기(1개)
-		mockOrderVo.setUserNo(mockUserVo01.getNo());
-		mockOrderVo.setNumber("20240520-000012");
-		mockOrderVo.setPayment(82400);
-		mockOrderVo.setShipping("서울시 은평구 진관3로 77 구파발 래미안 926-801");
-		mockOrderVo.setStatus("배송준비");	
-		orderDao.insert(mockOrderVo);
-		
-		// 주문책(2개)		
-		mockOrderBookVo01.setOrderNo(mockOrderVo.getNo());
-		mockOrderBookVo01.setBookNo(mockBookVo01.getNo());
-		mockOrderBookVo01.setQuantity(1);
-		mockOrderBookVo01.setPrice(20000);
-		orderDao.insertBook(mockOrderBookVo01);
-	
-		mockOrderBookVo02.setOrderNo(mockOrderVo.getNo());
-		mockOrderBookVo02.setBookNo(mockBookVo02.getNo());
-		mockOrderBookVo02.setQuantity(2);
-		mockOrderBookVo02.setPrice(64000);		
-		orderDao.insertBook(mockOrderBookVo02);
-	}
-	
-	@Test
-	public void test() {
-		assertTrue(1-1 == 0);
-	}
-	
+//		
+//		// 카테고리 등록(3개)
+//		categoryDao.insert(mockCategoryVo01);
+//		categoryDao.insert(mockCategoryVo02);
+//		categoryDao.insert(mockCategoryVo03);
+//		
+//		// 서적 등록(3개)
+//		mockBookVo01.setCategoryNo(mockCategoryVo01.getNo());
+//		bookDao.insert(mockBookVo01);
 //
+//		mockBookVo02.setCategoryNo(mockCategoryVo02.getNo());
+//		bookDao.insert(mockBookVo02);
+//
+//		mockBookVo03.setCategoryNo(mockCategoryVo03.getNo());		
+//		bookDao.insert(mockBookVo03);
+//		
+//		// 카트 담기(2개)
+//		mockCartVo01.setUserNo(mockUserVo01.getNo());
+//		mockCartVo01.setBookNo(mockBookVo01.getNo());
+//		mockCartVo01.setQuantity(1);
+//		cartDao.insert(mockCartVo01);
+//		
+//		mockCartVo02.setUserNo(mockUserVo01.getNo());
+//		mockCartVo02.setBookNo(mockBookVo02.getNo());
+//		mockCartVo02.setQuantity(2);		
+//		cartDao.insert(mockCartVo02);
+//		
+//		// 주문하기(1개)
+//		mockOrderVo.setUserNo(mockUserVo01.getNo());
+//		mockOrderVo.setNumber("20240520-000012");
+//		mockOrderVo.setPayment(82400);
+//		mockOrderVo.setShipping("서울시 은평구 진관3로 77 구파발 래미안 926-801");
+//		mockOrderVo.setStatus("배송준비");	
+//		orderDao.insert(mockOrderVo);
+//		
+//		// 주문책(2개)		
+//		mockOrderBookVo01.setOrderNo(mockOrderVo.getNo());
+//		mockOrderBookVo01.setBookNo(mockBookVo01.getNo());
+//		mockOrderBookVo01.setQuantity(1);
+//		mockOrderBookVo01.setPrice(20000);
+//		orderDao.insertBook(mockOrderBookVo01);
+//	
+//		mockOrderBookVo02.setOrderNo(mockOrderVo.getNo());
+//		mockOrderBookVo02.setBookNo(mockBookVo02.getNo());
+//		mockOrderBookVo02.setQuantity(2);
+//		mockOrderBookVo02.setPrice(64000);		
+//		orderDao.insertBook(mockOrderBookVo02);
+	}
+	
 //	@Test
-//	public void testUser() {
-//		assertEquals(2, userDao.findAll().size());
+//	public void testtt() {
+//		assertTrue(1-1 == 0);
 //	}
+
+	@Test
+	public void testUser() {
+		assertEquals(2, userDao.findAll().size());
+	}
 //
 //	@Test
 //	public void testCategory() {
@@ -167,9 +167,9 @@ public class BookMallTest {
 //		assertEquals(mockOrderBookVo02.getBookNo(), list.get(1).getBookNo());
 //		assertEquals(mockBookVo02.getTitle(), list.get(1).getBookTitle());		
 //	}
-//	
-//	@AfterAll
-//	public static void cleanUp() {
+	
+	@AfterAll
+	public static void cleanUp() {
 //		//주문책
 //		orderDao.deleteBooksByNo(mockOrderVo.getNo());
 //		
@@ -190,8 +190,8 @@ public class BookMallTest {
 //		categoryDao.deleteByNo(mockCategoryVo02.getNo());
 //		categoryDao.deleteByNo(mockCategoryVo03.getNo());
 //		
-//		// 사용자
-//		userDao.deleteByNo(mockUserVo01.getNo());
-//		userDao.deleteByNo(mockUserVo02.getNo());
-//	}
+		// 사용자
+		userDao.deleteByNo(mockUserVo01.getNo());
+		userDao.deleteByNo(mockUserVo02.getNo());
+	}
 }
