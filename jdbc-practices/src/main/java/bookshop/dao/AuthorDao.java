@@ -110,5 +110,20 @@ public class AuthorDao {
 		
 	}
 	
+	public int deleteAll() {
+		int result = 0;
+		
+		try (
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("delete from author");
+		) {
+			result = pstmt.executeUpdate();
+		} catch (SQLException ex) {
+			System.out.println("error:" + ex);
+		}
+		
+		return result;
+	}	
+	
 
 }
